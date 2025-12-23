@@ -1,0 +1,2 @@
+Dọn dẹp Cache và Log bằng lệnh
+php artisan optimize:clear
