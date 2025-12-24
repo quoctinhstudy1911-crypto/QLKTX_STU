@@ -1,4 +1,4 @@
-name: Laravel CI
+name: Laravel CI & CD
 
 on:
   push:
@@ -42,3 +42,33 @@ jobs:
 
     - name: Chạy Test
       run: php artisan test
+
+
+  deploy:
+    needs: laravel-tests
+    runs-on: ubuntu-latest
+    if: success()
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+
+    - name: Install Composer Dependencies
+    # build vendor trước rồi upload lên hosting
+      run: |
+        cd ql_ktx_stu
+        composer install --no-dev --optimize-autoloader
+
+    - name: Deploy via FTP to InfinityFree
+      uses: SamKirkland/FTP-Deploy-Action@v4
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ql_ktx_stu/
+        server-dir: /htdocs/ql_ktx_stu/
