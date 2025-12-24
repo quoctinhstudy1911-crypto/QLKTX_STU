@@ -16,3 +16,4 @@ class BedTest extends TestCase
         $response->assertSessionHasErrors('room_id');
     }
 }
+

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Bed extends Model
 {
     protected $fillable = [
-        'bed_code', 'status', 'note'
+        'room_id', 'bed_code', 'status', 'note'
     ];
 
     public function room()
