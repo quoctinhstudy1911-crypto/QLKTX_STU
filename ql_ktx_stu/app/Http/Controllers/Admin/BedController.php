@@ -36,7 +36,9 @@ class BedController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-          'room_id' => 'nullable',
+          
+
+            'room_id' => 'nullable',
             'bed_code'  => 'required|max:50',
             'status'    => 'required|in:available,occupied,maintenance',
             'note'      => 'nullable'
