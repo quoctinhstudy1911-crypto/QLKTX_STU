@@ -3,18 +3,20 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use App\Models\User;
 
 class BedTest extends TestCase
 {
     public function test_cannot_create_bed_without_room_id()
-{
-    $response = $this->post('/admin/beds', [
-        'bed_code' => 'A1',
-        'status' => 'available'
-    ]);
+    {
+        // Login trước
+        $this->actingAs(User::factory()->create());
 
-    $response->assertSessionHasErrors('room_id');
+        $response = $this->post('/admin/beds', [
+            'bed_code' => 'A1',
+            'status' => 'available'
+        ]);
+
+        $response->assertSessionHasErrors('room_id');
+    }
 }
-
-}
-
