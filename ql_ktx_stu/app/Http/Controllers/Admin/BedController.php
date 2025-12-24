@@ -37,7 +37,9 @@ class BedController extends Controller
     {
         $request->validate([
             'room_id'   => 'required|exists:rooms,id',
+
             'bed_code'  => 'required|max:50',
+            
             'status'    => 'required|in:available,occupied,maintenance',
             'note'      => 'nullable'
         ], [
