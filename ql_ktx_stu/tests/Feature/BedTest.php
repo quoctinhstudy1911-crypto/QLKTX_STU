@@ -7,6 +7,7 @@ use App\Models\User;
 
 class BedTest extends TestCase
 {
+    use RefreshDatabase;
     public function test_cannot_create_bed_without_room_id()
     {
         // Login trước
