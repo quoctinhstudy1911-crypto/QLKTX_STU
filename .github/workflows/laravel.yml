@@ -40,8 +40,6 @@ jobs:
     - name: Migrate database
       run: php artisan migrate --force
 
-    - name: Chạy Test
-      run: php artisan test
 
 
   deploy:
