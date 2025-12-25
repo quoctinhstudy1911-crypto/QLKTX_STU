@@ -1,4 +1,4 @@
-name: Laravel CI & CD
+name: "Laravel CI & CD"
 
 on:
   push:
@@ -58,8 +58,7 @@ jobs:
       with:
         php-version: '8.2'
 
-    - name: Install Composer Dependencies
-    # build vendor trước rồi upload lên hosting
+    - name: Install Composer Dependencies (Production)
       run: |
         cd ql_ktx_stu
         composer install --no-dev --optimize-autoloader
